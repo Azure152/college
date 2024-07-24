@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->text('content')->nullable();
             $table->float('score', 2);
             $table->unsignedBigInteger('asignature_id');
             $table->timestamps();
 
+            $table->unique('name', 'asignature_id');
             $table->foreign('asignature_id')->references('id')
                 ->on('asignatures')->cascadeOnDelete();
         });

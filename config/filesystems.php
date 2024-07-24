@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+        'annFiles' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/annotation_files'),
+            'url' => env('APP_URL').'/storage/annotation_files',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*

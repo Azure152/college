@@ -82,9 +82,17 @@ body {
 }
 
 .title {
-    display: inline-block;
+    display: block;
     color: var(--primary);
     font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0.8rem 0px 1.5rem 0px;
+}
+
+.sub-title {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0.8rem 0px 1.5rem 0px;
 }
@@ -122,6 +130,10 @@ body {
     /* box-shadow: 0px 0px 4px 2px rgb(71, 147, 252, 0.7); */
 }
 
+textarea.input {
+    resize: vertical;
+}
+
 .btn {
     --bg-cl: #ddd;
     --text-cl: #333;
@@ -144,6 +156,10 @@ body {
 .btn:hover {
     background-color: var(--hover-bg-cl);
     color: var(--hover-text-cl, inherit);
+}
+
+.btn--small {
+    padding: 3px 1rem;
 }
 
 .btn--safe {
@@ -198,7 +214,8 @@ body {
     width: 100%;
     height: 100%;
     inset: 0;
-    box-shadow: 0px 0px 6px 1px rgb(71, 147, 252, 0.5);
+    box-shadow: 0px 0px 6px 1px rgb(71, 147, 222, 0.5);
+    outline: 1px solid rgb(71, 147, 222);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -267,4 +284,156 @@ body {
 
 .pagination__item:hover::after {
     background-color: var(--primary);
+}
+
+.field__errors {
+    padding-left: 1rem;
+    color: var(--danger);
+    font-size: 0.9rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(71, 147, 222, 0.5);
+}
+
+.table tr {
+    text-align: center;
+}
+
+.table thead tr {
+    background-color: var(--primary);
+}
+
+.table thead th {
+    border: 1px solid var(--primary-hard);
+}
+
+.table tbody {
+    background-color: #2f2f2f;
+}
+
+.table td, .table th {
+    padding-block: 10px;
+}
+
+.table tbody td {
+    /* border-right: 1px solid #232428; */
+}
+
+.table tbody tr {
+    /* border-bottom: 1px solid #232428; */
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.link--simple {
+    color: var(--primary);
+    text-decoration: underline;
+    display: inline-block;
+    border: none;
+    background-color: unset;
+    padding: 0px;
+    margin: 0px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.link--simple:active {
+    color: var(--primary-hard);
+}
+
+.txt-primary {
+    color: var(--primary);
+}
+
+.txt-danger {
+    color: var(--danger);
+}
+
+/* .multiple-file__item {
+    display: flex;
+    gap: 10px;
+}
+
+.multiple-file__item > input[type="file"] {
+    display: none;
+}
+
+.multiple-file__item > .input::placeholder {
+    font-style: italic;
+}
+
+.multiple-file__item > .btn--danger {
+    display: none;
+}
+
+.multiple-file__item:has(input[type="file"]:checked) .btn--danger {
+    display: none;
+}
+ */
+
+
+.input[type="file"] {
+    padding: 0px;
+}
+
+.input[type="file"]::file-selector-button {
+    line-height: 1.5rem;
+    padding: 0.6rem 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    border: unset;
+    font: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.custom-input-file {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.custom-input-file input[type="file"] {
+    /* display: none; */
+    /* visibility: hidden; */
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    pointer-events: none;
+}
+
+.custom-input-file .input-file-text {
+    width: 100%;
+    display: inline-block;
+    flex: 1 1 auto;
+    color: #999;
+    font-style: italic;
+}
+
+.custom-input-file .input-file-buttons {
+    flex: 0 0 auto;
+    margin-left: 20px;
+}
+
+
+.custom-input-file.attached .input-file-text {
+    color: #ddd;
+    font-style: normal;
+}
+
+.custom-input-file:focus {
+    border-color: var(--primary);
+}
+
+.custom-input-file:has([rel="btn-select-file"]:focus) .input-file-text {
+    border-color: var(--primary);
 }

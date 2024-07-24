@@ -16,6 +16,8 @@
             <div id="app__navegation">
                 <x-navegation />
             </div>
+
+            {{ $js ?? null }}
         </div>
     </body>
 </html>
