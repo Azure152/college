@@ -38,6 +38,7 @@ Route::controller(AnnotationController::class)->group(function () {
         Route::post('annotations/create', 'store')->name('annotations.store');
     });
 
+    Route::get('annotations/{id}', 'show')->name('annotations.show');
     Route::get('annotations/{annotation}/edit', 'edit')->name('annotations.edit');
     Route::put('annotations/{annotation}', 'update')->name('annotations.update');
     Route::delete('annotations/{annotation}', 'delete')->name('annotations.delete');
@@ -52,4 +53,5 @@ Route::controller(AnnotationFileController::class)->group(function () {
     });
 
     Route::delete('annotations/files/{annotationFile}', 'delete')->name('annotations.file.delete');
+    Route::get('annotations/files/{annotationFile}', 'download')->name('annotations.file.download');
 });

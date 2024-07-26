@@ -51,36 +51,41 @@
     </div>
 
     <div class="container">
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>TITULO</th>
-                    <th>CREACION</th>
-                    <th width="20%">ACCIONES</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($annotations as $item)
+        @if ($annotations->isNotEmpty())
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>
-                            <a href="{{ route('annotations.edit', $item->id) }}" class="link--simple txt-primary">editar</a>
-                            <span>|</span>
-                            <form action="{{ route('annotations.delete', $item->id) }}" method="post" style="display:inline-block">
-                                @csrf
-                                @method('delete')
-                                <button class="link--simple txt-danger">eliminar</button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>TITULO</th>
+                        <th>CREACION</th>
+                        <th width="20%">ACCIONES</th>
                     </tr>
-                @endforeach
+                </thead>
+                <tbody>
+                    @foreach ($annotations as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->created_at }}</td>
+                            <td>
+                                <a href="{{ route('annotations.edit', $item->id) }}" class="link--simple txt-primary">editar</a>
+                                <span>|</span>
+                                <form action="{{ route('annotations.delete', $item->id) }}" method="post" style="display:inline-block">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="link--simple txt-danger">eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
 
-                {{ $annotations->links('components.pagination') }}
-            </tbody>
-        </table>
+                    {{ $annotations->links('components.pagination') }}
+                </tbody>
+            </table>
+        @else 
+            <div class="search-notfound-message" style="padding:1rem">
+                <span>No se encontraron anotaciones</span>
+            </div>
+        @endif
     </div>
 </x-layouts.app>

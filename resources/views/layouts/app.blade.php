@@ -11,6 +11,14 @@
     <body>
         <div id="app--wrapper">
             <div id="app__content">
+                @session('noti')
+                    <div class="notification">
+                        <div class="notification-text">
+                            {{ Session::get('noti') }}
+                        </div>
+                    </div>
+                @endsession
+
                 {{ $slot }}
             </div>
             <div id="app__navegation">

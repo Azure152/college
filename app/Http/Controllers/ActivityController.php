@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ActivityController extends Controller
 {
@@ -44,9 +45,29 @@ class ActivityController extends Controller
     /**
      * display the content from a activity
      */
-    public function show(Activity $activity): View
+    public function show(int $activity): View
     {
-        return view('activities.list', compact('activity'));
+        $model = Activity::join(
+            'asignatures',
+            'activities.asignature_id',
+            '=',
+            'asignatures.id'
+        )->select(
+            'activities.id',
+            'activities.name',
+            'activities.content',
+            'activities.score',
+            'asignatures.name as asignature'
+        )->where('activities.id', $activity)->first();
+
+        if (! $model) {
+            throw new NotFoundHttpException();
+        }
+
+        return view('activities.show', [
+            'activity' => $model,
+            'annotations' => $model->annotations()->select('id', 'title')->get(),
+        ]);
     }
 
     /**

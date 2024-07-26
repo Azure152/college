@@ -6,7 +6,9 @@
         <div class="sub-title">
             <span>Informacion general</span>
         </div>
-        <form action="" method="post">
+        <form action="{{ route('annotations.update', $annotation) }}" method="post">
+            @method('put')
+            @csrf
             <div class="input__row">
                 <label class="input__field span-12">
                     <span class="input__label">Titulo</span>
